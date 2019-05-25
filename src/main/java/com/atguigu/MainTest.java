@@ -1,7 +1,7 @@
 package com.atguigu;
 
 import com.atguigu.bean.Person;
-import com.atguigu.com.atguigu.config.MainConfig;
+import com.atguigu.config.BeanConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,14 +16,14 @@ public class MainTest {
         Person person2 = (Person)applicationContext.getBean("person");//通过id
         System.out.println(person1 + "---" + person2 + "++++" + (person1==person2));
 
-        ApplicationContext applicationContext1 = new AnnotationConfigApplicationContext(MainConfig.class);
+        ApplicationContext applicationContext1 = new AnnotationConfigApplicationContext(BeanConfig.class);
         Person person3 = applicationContext1.getBean(Person.class);
         String[] names = applicationContext1.getBeanNamesForType(Person.class);//通过id
         for (String name:names
              ) {
             System.out.println(name);
         }
-        System.out.println(person3 + "---"  + "++++" );
+        System.out.println(person3);
 
 
     }
