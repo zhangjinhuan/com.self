@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
  * Created by daynew on 2019/5/25.
  */
 @Configuration
-@ComponentScan(value = "com.atguigu",excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ANNOTATION,classes = {Controller.class})
+@ComponentScan(value = "com.atguigu",includeFilters = {
+        //@ComponentScan.Filter(type = FilterType.ANNOTATION,classes = {Controller.class})
+        @ComponentScan.Filter(type = FilterType.CUSTOM,classes = {MyTypeFilter.class})//自定义扫描虽则
 })
 public class BeanConfig {
     @Bean("person2")
