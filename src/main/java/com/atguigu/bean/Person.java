@@ -28,9 +28,10 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String age) {
+    public Person(String name, String age,String nickName) {
         this.name = name;
         this.age = age;
+        this.nickName = nickName;
     }
 
     @Override
