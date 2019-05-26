@@ -1,10 +1,9 @@
 package com.atguigu.config;
 
 import com.atguigu.bean.Person;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import com.atguigu.condition.LinuxCondition;
+import com.atguigu.condition.WindowsCondition;
+import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -13,9 +12,20 @@ import org.springframework.stereotype.Controller;
 @Configuration
 @ComponentScan(value = "com.atguigu",includeFilters = {
         //@ComponentScan.Filter(type = FilterType.ANNOTATION,classes = {Controller.class})
-        @ComponentScan.Filter(type = FilterType.CUSTOM,classes = {MyTypeFilter.class})//自定义扫描虽则
-})
+        @ComponentScan.Filter(type = FilterType.CUSTOM,classes = {MyTypeFilter.class})//自定义扫描规则
+},useDefaultFilters=false)
+@Conditional({WindowsCondition.class})//配置在类上，表示满足条件则这个类中配置的所有bean注册的才生效，不满足里面的所有都不生效
 public class BeanConfig {
+    @Conditional({WindowsCondition.class})//配置在方法上
+    @Bean(value = "Bill")
+    public Person person01(){
+        return new Person("Bill Gates","50");
+    }
+    @Conditional({LinuxCondition.class})
+    @Bean("Linus")
+    public Person person02(){
+        return new Person("Linus","40");
+    }
     @Bean("person2")
     public Person getPerson(){
         return new Person("李四","19");

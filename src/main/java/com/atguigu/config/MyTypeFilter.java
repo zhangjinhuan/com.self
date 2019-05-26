@@ -21,7 +21,7 @@ public class MyTypeFilter implements TypeFilter {
         //获取当前类的路径资源信息
         Resource resource = metadataReader.getResource();
         String className = classMetadata.getClassName();
-        System.out.println("---" + className);//打印出扫描的类
+        System.out.println("扫描了这些类：-" + className);//打印出扫描的类
         if(className.contains("er")){//当前类名字包含er，则扫描进来
             return true;
         }
