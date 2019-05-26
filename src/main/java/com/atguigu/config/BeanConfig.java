@@ -1,5 +1,6 @@
 package com.atguigu.config;
 
+import com.atguigu.bean.Color;
 import com.atguigu.bean.Person;
 import com.atguigu.condition.LinuxCondition;
 import com.atguigu.condition.WindowsCondition;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
         @ComponentScan.Filter(type = FilterType.CUSTOM,classes = {MyTypeFilter.class})//自定义扫描规则
 },useDefaultFilters=false)
 @Conditional({WindowsCondition.class})//配置在类上，表示满足条件则这个类中配置的所有bean注册的才生效，不满足里面的所有都不生效
+@Import({Color.class})//导入组件，id默认为组件的全类名
 public class BeanConfig {
     @Conditional({WindowsCondition.class})//配置在方法上
     @Bean(value = "Bill")
