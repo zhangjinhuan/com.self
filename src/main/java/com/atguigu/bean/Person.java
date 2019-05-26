@@ -33,6 +33,12 @@ public class Person {
         this.age = age;
         this.nickName = nickName;
     }
+    public Person(String name, String age) {
+        this.name = name;
+        this.age = age;
+        this.nickName = nickName;
+        this.nickName = nickName;
+    }
 
     @Override
     public String toString() {
