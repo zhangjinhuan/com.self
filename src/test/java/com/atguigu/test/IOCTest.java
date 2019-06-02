@@ -25,7 +25,6 @@ public class IOCTest {
         for (String bean:beanDefinitionNames) {
             System.out.println(bean);
         }
-
     }
     @Test
     public void test01(){

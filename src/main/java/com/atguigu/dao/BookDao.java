@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by daynew on 2019/5/25.
  */
-@Repository
+@Repository(value = "bookDao2")
 public class BookDao {
     private String label = "1";
 

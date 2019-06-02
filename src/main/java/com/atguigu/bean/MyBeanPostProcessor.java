@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MyBeanPostProcessor implements BeanPostProcessor {
-    //o为bean对象，s为bean名字
-    public Object postProcessBeforeInitialization(Object o, String s) throws BeansException {
-        System.out.println("前置通知方法-" + o + "+" + s);
-        return o;
+    //bean:容器先建的bean，beanName:该bean的name
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("MyBeanPostProcessor前置通知-" + bean + "-----" + beanName);
+        return bean;
     }
 
-    public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
-        System.out.println("后置通知方法-" + o + "+" + s);
-        return o;
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out.println("MyBeanPostProcessor后置通知-" + bean + "-----" + beanName);
+        return bean;
     }
 }
